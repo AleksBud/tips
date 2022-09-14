@@ -109,6 +109,8 @@ def plot_relations(y_type2, tips):
         # st.plotly_chart(fig, use_container_width=True)
     return fig
 
+
+
 def categories_encoder(data):
     data['sex'] = data['sex'].apply(lambda x: 1 if x == 'Female' else 0)
     data['smoker'] = data['smoker'].apply(lambda x: 1 if x == 'Yes' else 0)

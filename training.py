@@ -1,7 +1,7 @@
 import pandas as pd
-
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 
 from functions import categories_encoder
@@ -15,9 +15,17 @@ X = tips.drop('tip', axis=1)
 Y = tips['tip']
 x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.70, random_state=20)
 
+# linear regression
 lr = LinearRegression()
 lr.fit(x_train, y_train)
 
 y_pred = lr.predict(x_test)
-
 metrics.r2_score(y_test, y_pred)
+
+# random forest
+
+rf = RandomForestRegressor(random_state=1)
+rf.fit(x_train, y_train)
+
+y_pred2 = rf.predict(x_test)
+metrics.r2_score(y_test, y_pred2)
